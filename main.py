@@ -63,5 +63,6 @@ if user_prompt:
 
     ## display response
 
-    with st.chat_message("assistant")
+    with st.chat_message("assistant"):
+        st.markdown(assistant_response)
     
