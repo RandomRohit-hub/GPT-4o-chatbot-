@@ -26,4 +26,13 @@ st.set_page_config(
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
+## stramlit page title
+
+st.title(" 🥂 HomeMaded AI Chatbot")
+##display chat history 
+
+for message in st.session_state.chat_history:
+    with st.chat_message(message["role"]):
+       st.markdown(message['content'])
+
 
