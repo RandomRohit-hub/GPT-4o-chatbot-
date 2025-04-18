@@ -36,3 +36,32 @@ for message in st.session_state.chat_history:
        st.markdown(message['content'])
 
 
+## input field for user message
+
+user_prompt=st.chat_input("ASK GPT-4o....")
+if user_prompt:
+    ## add user msh to chat history and display it
+
+    st.chat_message('user').markdown(user_prompt)
+    st.session_state.chat_history.append({'role':'user','content':user_prompt})
+
+
+
+    #send user msg to gpt and get msg
+    response=openai.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role":"system","content":"you are an expert annd a helpful assistant"},
+            *st.session_state.chat_history
+        ]
+    )
+
+
+
+    assistant_response=response.choices[0].message.content
+    st.session_state.chat_history.append({"role":"assistant","content":assistant_response})
+
+    ## display response
+
+    with st.chat_message("assistant")
+    
